@@ -1,0 +1,9 @@
+#!/usr/bin/python
+
+import subprocess
+
+server=subprocess.Popen(['node',"server/index.js"],stdout=subprocess.PIPE)
+client=subprocess.Popen(['make',"run"],stdout=subprocess.PIPE)
+
+client.wait()
+server.kill()

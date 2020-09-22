@@ -1,0 +1,22 @@
+{
+  "name": "osc2sio",
+  "version": "1.0.0",
+  "description": "OSC server that forwards to SocketIO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "osc",
+    "server",
+    "websockets",
+    "socketio"
+  ],
+  "author": "David Jonas",
+  "license": "MIT",
+  "dependencies": {
+    "node": "^14.11.0",
+    "node-osc": "^5.2.1",
+    "socket.io-client": "^2.3.0"
+  }
+}
