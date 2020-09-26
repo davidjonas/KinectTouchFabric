@@ -16,6 +16,8 @@ void ofApp::initGui() {
   areaGui.setup("Active area", "area.xml", 10, 140);
   areaGui.add(editMode.setup("Edit Mode", false));
   areaGui.add(playMode.setup("Play Mode", true));
+  areaGui.add(flipX.setup("Flip X", false));
+  areaGui.add(flipY.setup("Flip Y", false));
   areaGui.add(clear.setup("Clear area"));
   areaGui.add(save.setup("Save"));
   areaGui.loadFromFile("area.xml");
@@ -167,7 +169,7 @@ void ofApp::handleTouches(ofRectangle bounds) {
       t.position = ofVec3f(
         (b.blob.centroid.x - bounds.getMinX())/bounds.getWidth(),
         (b.blob.centroid.y - bounds.getMinY())/bounds.getHeight(),
-         b.blob.area);
+         b.blob.area / bounds.getArea());
       t.direction = b.direction;
       t.id = b.id;
       t.speed = b.speed;
@@ -177,6 +179,11 @@ void ofApp::handleTouches(ofRectangle bounds) {
   if(active_touches.size() > 0)
   {
     sendBlobs(active_touches);
+    waitingForTouches = false;
+  }
+  else if(!waitingForTouches){
+    sendBlobs(active_touches);
+    waitingForTouches = true;
   }
 }
 
@@ -269,10 +276,10 @@ void ofApp::sendBlobs(vector<touch> touches){
 
     touch["id"] = t->id;
     touch["speed"] = t->speed;
-    touch["direction"]["x"] = t->direction.x;
-    touch["direction"]["y"] = t->direction.y;
-    touch["position"]["x"] = t->position.x;
-    touch["position"]["y"] = t->position.y;
+    flipX ? touch["direction"]["x"] = t->direction.x : touch["direction"]["x"] = -t->direction.x;
+    flipY ? touch["direction"]["y"] = t->direction.y : touch["direction"]["y"] = -t->direction.y;
+    flipX ? touch["position"]["x"] = t->position.x : touch["position"]["x"] = 1.0-t->position.x;
+    flipY ? touch["position"]["y"] = t->position.y : touch["position"]["y"] = 1.0-t->position.y;
     touch["position"]["z"] = t->position.z;
 
     touchesJson.push_back(touch);

@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <Active_area>
-	<Edit_Mode>1</Edit_Mode>
+	<Edit_Mode>0</Edit_Mode>
 	<Play_Mode>1</Play_Mode>
+	<Flip_X>1</Flip_X>
+	<Flip_Y>1</Flip_Y>
 </Active_area>

@@ -64,10 +64,13 @@ class ofApp : public ofBaseApp{
     ofxToggle playMode;
     ofxButton clear;
     ofxButton save;
+    ofxToggle flipX;
+    ofxToggle flipY;
 
     ofPolyline activeArea;
 
     //Comms
     bool isConnected;
     ofxOscSender sender;
+    bool waitingForTouches;
 };

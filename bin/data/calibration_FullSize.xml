@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Calibration>
-	<Bandwidth>19.125</Bandwidth>
-	<Distance>19.125</Distance>
-	<Threshold>3.7</Threshold>
+	<Bandwidth>31.875</Bandwidth>
+	<Distance>66.3</Distance>
+	<Threshold>5.2</Threshold>
 	<Blur_Amount>63</Blur_Amount>
 	<Minimum_Blob_Area>375</Minimum_Blob_Area>
 </Calibration>
